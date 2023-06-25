@@ -10,13 +10,14 @@ env:
 
 jobs:
   Build_and_push:
-    name: Test
+    name: Build and push
     runs-on: ubuntu-latest
     env:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
     steps:
       - uses: actions/checkout@v3
+      - uses: docker/setup-qemu-action@v2
       - uses: docker/setup-buildx-action@v2
 
       - name: Login to Docker Hub
